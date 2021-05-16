@@ -5,6 +5,7 @@ const app = express()
 const port = process.env.PORT || 3000
 const http = require('http').Server(app)
 
+require('module-alias/register')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
