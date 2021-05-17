@@ -1,8 +1,6 @@
 const { Model } = require('objection')
 const { db } = require('@config/connection')
 
-const newsModel = require('./NewsModel')
-
 Model.knex(db)
 
 class NewsTagModel extends Model {
@@ -14,13 +12,17 @@ class NewsTagModel extends Model {
     return 'id_news_tag'
   }
 
-  static relationMappings = {
-    news: {
-      relation: Model.BelongsToOneRelation,
-      modelClass: newsModel,
-      join: {
-        from: 'news_tag.id_news',
-        to: 'news.id_news'
+  static get relationMappings() {
+    const newsModel = require('./NewsModel')
+    
+    return {
+      news: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: newsModel,
+        join: {
+          from: 'news_tag.id_news',
+          to: 'news.id_news'
+        }
       }
     }
   }
