@@ -1,7 +1,7 @@
-const { v4: uuidv4 } = require('uuid');
-const MD5 = require('crypto-js/md5');
+const { v4: uuidv4 } = require('uuid')
+const MD5 = require('crypto-js/md5')
 
-exports.seed = function(knex) {
+exports.seed = function (knex) {
   return knex('user').del()
     .then(function () {
       return knex('user').insert([
@@ -15,6 +15,6 @@ exports.seed = function(knex) {
           username: 'admin',
           password: MD5('admin').toString()
         }
-      ]);
-    });
-};
+      ])
+    })
+}
